@@ -80,7 +80,7 @@
 			<version>${spring-framework.version}</version>
 		</dependency>
 
-		<!-- Thymleaf-->
+		<!-- Thymleaf -->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring4</artifactId>
@@ -150,12 +150,17 @@
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
 			<version>1.1.6</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.18.2-GA</version>
+		</dependency>
+
 
 
 		<!-- Servlet -->
@@ -221,10 +226,10 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
-	 <dependency>
-	  <groupId>org.eclipse.persistence</groupId>
-	  <artifactId>eclipselink</artifactId>
-	  <version>2.5.2</version>
-	 </dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.2</version>
+		</dependency>
 	</dependencies>
 </project>

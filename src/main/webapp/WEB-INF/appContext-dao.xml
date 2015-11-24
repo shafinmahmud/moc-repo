@@ -38,14 +38,14 @@
 			</props>
 		</property>
 		<property name="packagesToScan">
-			<list>
-				<value>we.codered.rokomari.entity</value>
-			</list>
+			<value>we.codered.rokomari.entity</value>
 		</property>
+
 	</bean>
 
 	<context:component-scan base-package="we.codered.rokomari.dao"></context:component-scan>
 	<context:annotation-config />
+
 	<tx:annotation-driven />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean id="transactionManager"
