@@ -10,7 +10,7 @@
 
 
 	<context:property-placeholder location="classpath:persistence-mysql.properties" />
-	
+
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${jdbc.driverClassName}" />
@@ -21,7 +21,7 @@
 		<!-- these are C3P0 properties -->
 		<property name="acquireIncrement" value="${jdbc.acquireIncrement}" />
 		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
-		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
 		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
 	</bean>
 
@@ -53,4 +53,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 </beans>
