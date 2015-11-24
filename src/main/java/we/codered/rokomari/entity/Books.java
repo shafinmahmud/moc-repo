@@ -8,9 +8,12 @@ package we.codered.rokomari.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -20,6 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,18 +36,40 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "books")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Books.findAll", query = "SELECT b FROM Books b")})
+    @NamedQuery(name = "Books.findAll", query = "SELECT b FROM Books b"),
+    @NamedQuery(name = "Books.findByBooksId", query = "SELECT b FROM Books b WHERE b.booksId = :booksId"),
+    @NamedQuery(name = "Books.findByTitle", query = "SELECT b FROM Books b WHERE b.title = :title"),
+    @NamedQuery(name = "Books.findByCategories", query = "SELECT b FROM Books b WHERE b.categories = :categories"),
+    @NamedQuery(name = "Books.findByIsbn", query = "SELECT b FROM Books b WHERE b.isbn = :isbn"),
+    @NamedQuery(name = "Books.findByEdition", query = "SELECT b FROM Books b WHERE b.edition = :edition"),
+    @NamedQuery(name = "Books.findByNoOfPages", query = "SELECT b FROM Books b WHERE b.noOfPages = :noOfPages"),
+    @NamedQuery(name = "Books.findByCountry", query = "SELECT b FROM Books b WHERE b.country = :country"),
+    @NamedQuery(name = "Books.findByLanguage", query = "SELECT b FROM Books b WHERE b.language = :language"),
+    @NamedQuery(name = "Books.findByPreviousPrice", query = "SELECT b FROM Books b WHERE b.previousPrice = :previousPrice"),
+    @NamedQuery(name = "Books.findByCurrentPrice", query = "SELECT b FROM Books b WHERE b.currentPrice = :currentPrice"),
+    @NamedQuery(name = "Books.findByAvailability", query = "SELECT b FROM Books b WHERE b.availability = :availability"),
+    @NamedQuery(name = "Books.findByCreatedAt", query = "SELECT b FROM Books b WHERE b.createdAt = :createdAt"),
+    @NamedQuery(name = "Books.findByUpdatedAt", query = "SELECT b FROM Books b WHERE b.updatedAt = :updatedAt"),
+    @NamedQuery(name = "Books.findByImageUrl", query = "SELECT b FROM Books b WHERE b.imageUrl = :imageUrl")})
 public class Books implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected BooksPK booksPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "books_id")
+    private Integer booksId;
     @Size(max = 500)
     @Column(name = "title")
     private String title;
     @Size(max = 2000)
     @Column(name = "categories")
     private String categories;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "isbn")
+    private String isbn;
     @Size(max = 100)
     @Column(name = "edition")
     private String edition;
@@ -90,20 +116,21 @@ public class Books implements Serializable {
     public Books() {
     }
 
-    public Books(BooksPK booksPK) {
-        this.booksPK = booksPK;
+    public Books(Integer booksId) {
+        this.booksId = booksId;
     }
 
-    public Books(int booksId, String isbn) {
-        this.booksPK = new BooksPK(booksId, isbn);
+    public Books(Integer booksId, String isbn) {
+        this.booksId = booksId;
+        this.isbn = isbn;
     }
 
-    public BooksPK getBooksPK() {
-        return booksPK;
+    public Integer getBooksId() {
+        return booksId;
     }
 
-    public void setBooksPK(BooksPK booksPK) {
-        this.booksPK = booksPK;
+    public void setBooksId(Integer booksId) {
+        this.booksId = booksId;
     }
 
     public String getTitle() {
@@ -120,6 +147,14 @@ public class Books implements Serializable {
 
     public void setCategories(String categories) {
         this.categories = categories;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getEdition() {
@@ -246,7 +281,7 @@ public class Books implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (booksPK != null ? booksPK.hashCode() : 0);
+        hash += (booksId != null ? booksId.hashCode() : 0);
         return hash;
     }
 
@@ -257,7 +292,7 @@ public class Books implements Serializable {
             return false;
         }
         Books other = (Books) object;
-        if ((this.booksPK == null && other.booksPK != null) || (this.booksPK != null && !this.booksPK.equals(other.booksPK))) {
+        if ((this.booksId == null && other.booksId != null) || (this.booksId != null && !this.booksId.equals(other.booksId))) {
             return false;
         }
         return true;
@@ -265,7 +300,7 @@ public class Books implements Serializable {
 
     @Override
     public String toString() {
-        return "we.codered.rokomari.entity.Books[ booksPK=" + booksPK + " ]";
+        return "we.codered.rokomari.entity.Books[ booksId=" + booksId + " ]";
     }
     
 }

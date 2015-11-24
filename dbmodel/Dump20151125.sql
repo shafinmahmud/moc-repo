@@ -93,7 +93,8 @@ CREATE TABLE `books` (
   `subject_id_fk` int(11) DEFAULT NULL,
   `image_url` varchar(500) DEFAULT NULL,
   `book_summary` text,
-  PRIMARY KEY (`books_id`,`isbn`),
+  PRIMARY KEY (`books_id`),
+  UNIQUE KEY `isbn_UNIQUE` (`isbn`),
   KEY `author_id_fk_idx` (`author_id_fk`),
   KEY `publishers_id_fk_idx` (`publisher_id_fk`),
   KEY `subject_id_fk_idx` (`subject_id_fk`),
@@ -284,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-24 15:06:55
+-- Dump completed on 2015-11-25  1:54:23
