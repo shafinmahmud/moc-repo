@@ -7,10 +7,10 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/webapp/WEB-INF/applicationContext-dao.xml</config>
+		<config>src/main/webapp/WEB-INF/appContext-dao.xml</config>
+		<config>src/main/webapp/WEB-INF/appContext-security.xml</config>
 	</configs>
 	<autoconfigs>
-		<config>src/main/webapp/WEB-INF/applicationContext-security.xml</config>
 		<config>src/main/webapp/WEB-INF/servlet-context.xml</config>
 	</autoconfigs>
 	<configSets>
