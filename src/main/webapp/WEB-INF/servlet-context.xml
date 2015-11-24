@@ -32,7 +32,6 @@
     
     
     <!-- Efficiently serving static resources; e.g. test.png will be access-able directly by <SERVER>/images/test.png URL -->
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 </beans>
