@@ -40,7 +40,7 @@ import org.springframework.stereotype.Component;
 @NamedQueries({
 		@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
 		@NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-		@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
+		@NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
 		@NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
 		@NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled"),
 		@NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
@@ -54,8 +54,8 @@ public class User implements Serializable, UserDetails {
 	@Column(name = "user_id")
 	private Long userId;
 	@Basic(optional = false)
-	@Column(name = "username")
-	private String username;
+	@Column(name = "email")
+	private String email;
 	@Basic(optional = false)
 	@Column(name = "password")
 	private String password;
@@ -77,11 +77,11 @@ public class User implements Serializable, UserDetails {
 		this.userId = userId;
 	}
 
-	public User(Long userId, String username, String password, boolean enabled,
+	public User(Long userId, String email, String password, boolean enabled,
 			boolean accountNonLocked, boolean accountNonExpired,
 			boolean credentialsNonExpired) {
 		this.userId = userId;
-		this.username = username;
+		this.email = email;
 		this.password = password;
 		this.enabled = enabled;
 		this.accountNonLocked = accountNonLocked;
@@ -98,11 +98,11 @@ public class User implements Serializable, UserDetails {
 	}
 
 	public String getUsername() {
-		return username;
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

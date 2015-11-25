@@ -1,9 +1,11 @@
 package we.codered.rokomari.dao;
 
 import org.hibernate.Query;
+import org.springframework.stereotype.Repository;
 
 import we.codered.rokomari.entity.User;
 
+@Repository("userDao")
 public class UserDao extends GenericHibernateDao<User>  {
 	
 	public UserDao() {

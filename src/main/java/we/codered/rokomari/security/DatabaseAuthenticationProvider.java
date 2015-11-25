@@ -23,6 +23,8 @@ public class DatabaseAuthenticationProvider extends
 
 	@Autowired
 	private UserService userService;
+	
+
 
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
