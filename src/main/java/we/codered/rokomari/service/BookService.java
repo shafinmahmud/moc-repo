@@ -12,10 +12,10 @@ import we.codered.rokomari.entity.Books;
 public class BookService {
 
 	@Autowired
-	private BooksDao dao;
+	private BooksDao booksDao;
 
 	public List<Books> getBook(){
-		return dao.findAll();
+		return booksDao.findAll();
 	}
 	
 	public void createBook(){
