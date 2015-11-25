@@ -17,7 +17,7 @@
     
     
     <!-- Efficiently serving static resources; e.g. test.png will be access-able directly by <SERVER>/images/test.png URL -->
-    <mvc:resources mapping="/static/**" location="/static/"/>
+    
     
     <bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -26,12 +26,9 @@
 	</bean>
     
 
+	<mvc:resources location="/resources/" mapping="/resources/**" />
 	
 
 
-	<!-- Efficiently serving static resources; e.g. test.png will be access-able 
-		directly by <SERVER>/images/test.png URL -->
-	<mvc:resources mapping="/static/**" location="/static/" />
-
-
+    
 </beans>
