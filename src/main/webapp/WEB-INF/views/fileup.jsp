@@ -33,6 +33,12 @@
 			</div>
 		</form:form>
 		<a href="<c:url value='/'/>">Home</a>
+		
+		 Click on below links to see FileDownload in action.<br/><br/>   
+        <a href="<c:url value='/download/internal' />">Download This File (located inside project)</a>  
+        <br/>
+        <a href="<c:url value='/download/external' />">Download This File (located outside project, on file system)</a>
+      
 	</div>
 </body>
 </html>

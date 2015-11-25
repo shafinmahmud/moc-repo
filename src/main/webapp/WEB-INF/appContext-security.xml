@@ -20,6 +20,7 @@
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:intercept-url pattern="/categories/**" access="permitAll"/>
 		<security:intercept-url pattern="/fileup/**" access="permitAll"/>
+		<security:intercept-url pattern="/download/**" access="permitAll"/>
 		<security:intercept-url pattern="/formsubmit/**" access="permitAll"/>
 		<security:intercept-url pattern="/publishers/**" access="permitAll"/>	
 		<security:intercept-url pattern="/student/**" access="hasRole('ROLE_STUDENT')"/>
