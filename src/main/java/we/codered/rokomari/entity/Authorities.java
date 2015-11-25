@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
 @Table(name = "authorities")
 @XmlRootElement
 @NamedQueries({
-		@NamedQuery(name = "Authorities.findAll", query = "SELECT a FROM Authorities a"),
+    @NamedQuery(name = "Authorities.findAll", query = "SELECT a FROM Authorities a"),
     @NamedQuery(name = "Authorities.findByUserRoleId", query = "SELECT a FROM Authorities a WHERE a.userRoleId = :userRoleId"),
     @NamedQuery(name = "Authorities.findByRole", query = "SELECT a FROM Authorities a WHERE a.role = :role")})
 public class Authorities implements Serializable {

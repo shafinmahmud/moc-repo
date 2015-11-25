@@ -11,4 +11,10 @@ public class LoginController {
 
 		return "login";
 	}
+	
+	@RequestMapping("/signup")
+	public String showSignUp(){
+
+		return "signup";
+	}
 }

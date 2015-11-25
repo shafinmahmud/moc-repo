@@ -15,12 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author SHAFIN
+ * @author sss
  */
 @Entity
 @Table(name = "ordered_items")
@@ -31,11 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "OrderedItems.findByBookIdFk", query = "SELECT o FROM OrderedItems o WHERE o.bookIdFk = :bookIdFk"),
     @NamedQuery(name = "OrderedItems.findByQuantity", query = "SELECT o FROM OrderedItems o WHERE o.quantity = :quantity")})
 public class OrderedItems implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ordered_item_id")
     private Integer orderedItemId;
     @Column(name = "book_id_fk")

@@ -25,11 +25,9 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
-<h1 class="text-danger">welcome</h1>
-<a href="${pageContext.request.contextPath}/login">Login</a>
+
+
 </body>
 
-<script type="text/javascript">
 
-</script>
 </html>

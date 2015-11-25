@@ -6,8 +6,8 @@
 package we.codered.rokomari.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,14 +22,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SHAFIN
+ * @author sss
  */
 @Entity
 @Table(name = "books")
@@ -50,35 +47,28 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Books.findByAvailability", query = "SELECT b FROM Books b WHERE b.availability = :availability"),
     @NamedQuery(name = "Books.findByCreatedAt", query = "SELECT b FROM Books b WHERE b.createdAt = :createdAt"),
     @NamedQuery(name = "Books.findByUpdatedAt", query = "SELECT b FROM Books b WHERE b.updatedAt = :updatedAt"),
-    @NamedQuery(name = "Books.findByImageUrl", query = "SELECT b FROM Books b WHERE b.imageUrl = :imageUrl")})
+    @NamedQuery(name = "Books.findByImageUrl", query = "SELECT b FROM Books b WHERE b.imageUrl = :imageUrl"),
+    @NamedQuery(name = "Books.findByBookSummary", query = "SELECT b FROM Books b WHERE b.bookSummary = :bookSummary")})
 public class Books implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "books_id")
     private Integer booksId;
-    @Size(max = 500)
     @Column(name = "title")
     private String title;
-    @Size(max = 2000)
     @Column(name = "categories")
     private String categories;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
     @Column(name = "isbn")
     private String isbn;
-    @Size(max = 100)
     @Column(name = "edition")
     private String edition;
     @Column(name = "no_of_pages")
     private Integer noOfPages;
-    @Size(max = 45)
     @Column(name = "country")
     private String country;
-    @Size(max = 45)
     @Column(name = "language")
     private String language;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -94,11 +84,8 @@ public class Books implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @Size(max = 500)
     @Column(name = "image_url")
     private String imageUrl;
-    @Lob
-    @Size(max = 65535)
     @Column(name = "book_summary")
     private String bookSummary;
     @JoinColumn(name = "author_id_fk", referencedColumnName = "author_id")
@@ -111,7 +98,7 @@ public class Books implements Serializable {
     @ManyToOne
     private Subjects subjectIdFk;
     @OneToMany(mappedBy = "bookIdFk")
-    private Collection<Carts> cartsCollection;
+    private List<Carts> cartsList;
 
     public Books() {
     }
@@ -270,12 +257,12 @@ public class Books implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Carts> getCartsCollection() {
-        return cartsCollection;
+    public List<Carts> getCartsList() {
+        return cartsList;
     }
 
-    public void setCartsCollection(Collection<Carts> cartsCollection) {
-        this.cartsCollection = cartsCollection;
+    public void setCartsList(List<Carts> cartsList) {
+        this.cartsList = cartsList;
     }
 
     @Override

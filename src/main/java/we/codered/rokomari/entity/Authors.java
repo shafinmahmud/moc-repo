@@ -6,7 +6,7 @@
 package we.codered.rokomari.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,14 +17,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SHAFIN
+ * @author sss
  */
 @Entity
 @Table(name = "authors")
@@ -35,7 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Authors.findByAuthorName", query = "SELECT a FROM Authors a WHERE a.authorName = :authorName"),
     @NamedQuery(name = "Authors.findByAuthorBio", query = "SELECT a FROM Authors a WHERE a.authorBio = :authorBio")})
 public class Authors implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,15 +40,12 @@ public class Authors implements Serializable {
     @Column(name = "author_id")
     private Integer authorId;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
     @Column(name = "author_name")
     private String authorName;
-    @Size(max = 500)
     @Column(name = "author_bio")
     private String authorBio;
     @OneToMany(mappedBy = "authorIdFk")
-    private Collection<Books> booksCollection;
+    private List<Books> booksList;
 
     public Authors() {
     }
@@ -90,12 +84,12 @@ public class Authors implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Books> getBooksCollection() {
-        return booksCollection;
+    public List<Books> getBooksList() {
+        return booksList;
     }
 
-    public void setBooksCollection(Collection<Books> booksCollection) {
-        this.booksCollection = booksCollection;
+    public void setBooksList(List<Books> booksList) {
+        this.booksList = booksList;
     }
 
     @Override

@@ -18,12 +18,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author SHAFIN
+ * @author sss
  */
 @Entity
 @Table(name = "carts")
@@ -34,11 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Carts.findByQuantity", query = "SELECT c FROM Carts c WHERE c.quantity = :quantity"),
     @NamedQuery(name = "Carts.findByCreatedAt", query = "SELECT c FROM Carts c WHERE c.createdAt = :createdAt")})
 public class Carts implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "cart_id")
     private Integer cartId;
     @Column(name = "quantity")

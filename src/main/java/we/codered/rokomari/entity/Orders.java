@@ -6,8 +6,8 @@
 package we.codered.rokomari.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,14 +20,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SHAFIN
+ * @author sss
  */
 @Entity
 @Table(name = "orders")
@@ -41,11 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Orders.findByCreatedAt", query = "SELECT o FROM Orders o WHERE o.createdAt = :createdAt"),
     @NamedQuery(name = "Orders.findByStatus", query = "SELECT o FROM Orders o WHERE o.status = :status")})
 public class Orders implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "order_id")
     private Integer orderId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -53,7 +49,6 @@ public class Orders implements Serializable {
     private Double itemCost;
     @Column(name = "shipping_cost")
     private Double shippingCost;
-    @Size(max = 45)
     @Column(name = "payment_method")
     private String paymentMethod;
     @Column(name = "created_at")
@@ -62,7 +57,7 @@ public class Orders implements Serializable {
     @Column(name = "status")
     private Short status;
     @OneToMany(mappedBy = "orderIdFk")
-    private Collection<OrderedItems> orderedItemsCollection;
+    private List<OrderedItems> orderedItemsList;
     @JoinColumn(name = "user_id_fk", referencedColumnName = "user_id")
     @ManyToOne
     private User userIdFk;
@@ -123,12 +118,12 @@ public class Orders implements Serializable {
     }
 
     @XmlTransient
-    public Collection<OrderedItems> getOrderedItemsCollection() {
-        return orderedItemsCollection;
+    public List<OrderedItems> getOrderedItemsList() {
+        return orderedItemsList;
     }
 
-    public void setOrderedItemsCollection(Collection<OrderedItems> orderedItemsCollection) {
-        this.orderedItemsCollection = orderedItemsCollection;
+    public void setOrderedItemsList(List<OrderedItems> orderedItemsList) {
+        this.orderedItemsList = orderedItemsList;
     }
 
     public User getUserIdFk() {
