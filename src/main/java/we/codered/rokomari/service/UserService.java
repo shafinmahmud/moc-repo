@@ -13,6 +13,6 @@ public class UserService {
 	UserDao userDao;
 
 	public User getUser(String email){	
-		return userDao.getUserByEmail(email);		
+		return userDao.findByNamedQuery("User.findByEmail", "email", email);		
 	}
 }

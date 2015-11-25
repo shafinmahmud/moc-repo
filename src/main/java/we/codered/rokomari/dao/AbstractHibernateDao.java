@@ -30,6 +30,20 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
 		return getCurrentSession().createQuery("from " + clazz.getName()).list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public T findByNamedQuery(String namedQueryId, String param, String paramValue) {
+		return (T) getCurrentSession()
+				.getNamedQuery(namedQueryId)
+				.setString(param, paramValue).uniqueResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public T findByNamedQuery(String namedQueryId, String param, int paramValue) {
+		return (T) getCurrentSession()
+				.getNamedQuery(namedQueryId)
+				.setInteger(param, paramValue).uniqueResult();
+	}
+	
 	public void create(T entity) {
 		getCurrentSession().persist(entity);
 	}

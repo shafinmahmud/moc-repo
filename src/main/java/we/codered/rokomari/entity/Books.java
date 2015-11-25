@@ -25,10 +25,13 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author sss
  */
+@Component
 @Entity
 @Table(name = "books")
 @XmlRootElement
