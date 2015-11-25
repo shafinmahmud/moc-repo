@@ -22,7 +22,7 @@
 
 		<!-- Spring -->
 		<spring-framework.version>4.0.6.RELEASE</spring-framework.version>
-		<spring-security.version>3.2.4.RELEASE</spring-security.version>
+		<spring-security.version>3.2.5.RELEASE</spring-security.version>
 
 		<!-- Hibernate -->
 		<hibernate-framework.version>4.3.6.Final</hibernate-framework.version>
@@ -225,6 +225,16 @@
 	  <groupId>org.eclipse.persistence</groupId>
 	  <artifactId>eclipselink</artifactId>
 	  <version>2.5.2</version>
+	 </dependency>
+	 <dependency>
+	 	<groupId>javax.mail</groupId>
+	 	<artifactId>mail</artifactId>
+	 	<version>1.4.7</version>
+	 </dependency>
+	 <dependency>
+	 	<groupId>com.sun.mail</groupId>
+	 	<artifactId>javax.mail</artifactId>
+	 	<version>1.5.4</version>
 	 </dependency>
 	</dependencies>
 </project>

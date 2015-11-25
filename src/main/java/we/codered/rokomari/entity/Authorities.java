@@ -6,6 +6,7 @@
 package we.codered.rokomari.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,70 +18,76 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.springframework.stereotype.Component;
 
 /**
  *
- * @author SHAFIN
+ * @author sss
  */
+@Component
 @Entity
 @Table(name = "authorities")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Authorities.findAll", query = "SELECT a FROM Authorities a"),
-    @NamedQuery(name = "Authorities.findByAuthorityId", query = "SELECT a FROM Authorities a WHERE a.authorityId = :authorityId"),
-    @NamedQuery(name = "Authorities.findByAuthority", query = "SELECT a FROM Authorities a WHERE a.authority = :authority")})
+		@NamedQuery(name = "Authorities.findAll", query = "SELECT a FROM Authorities a"),
+    @NamedQuery(name = "Authorities.findByUserRoleId", query = "SELECT a FROM Authorities a WHERE a.userRoleId = :userRoleId"),
+    @NamedQuery(name = "Authorities.findByRole", query = "SELECT a FROM Authorities a WHERE a.role = :role")})
 public class Authorities implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "authority_id")
-    private Integer authorityId;
-    @Size(max = 45)
-    @Column(name = "authority")
-    private String authority;
-    @JoinColumn(name = "user_id_fk", referencedColumnName = "user_id")
-    @ManyToOne
-    private Users userIdFk;
+    @Column(name = "user_role_id")
+    private Long userRoleId;
+    @Basic(optional = false)
+    @Column(name = "role")
+    private String role;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User userId;
 
     public Authorities() {
     }
 
-    public Authorities(Integer authorityId) {
-        this.authorityId = authorityId;
+    public Authorities(Long userRoleId) {
+        this.userRoleId = userRoleId;
     }
 
-    public Integer getAuthorityId() {
-        return authorityId;
+    public Authorities(Long userRoleId, String role) {
+        this.userRoleId = userRoleId;
+        this.role = role;
     }
 
-    public void setAuthorityId(Integer authorityId) {
-        this.authorityId = authorityId;
+    public Long getUserRoleId() {
+        return userRoleId;
     }
 
-    public String getAuthority() {
-        return authority;
+    public void setUserRoleId(Long userRoleId) {
+        this.userRoleId = userRoleId;
     }
 
-    public void setAuthority(String authority) {
-        this.authority = authority;
+    public String getRole() {
+        return role;
     }
 
-    public Users getUserIdFk() {
-        return userIdFk;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public void setUserIdFk(Users userIdFk) {
-        this.userIdFk = userIdFk;
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (authorityId != null ? authorityId.hashCode() : 0);
+        hash += (userRoleId != null ? userRoleId.hashCode() : 0);
         return hash;
     }
 
@@ -91,7 +98,7 @@ public class Authorities implements Serializable {
             return false;
         }
         Authorities other = (Authorities) object;
-        if ((this.authorityId == null && other.authorityId != null) || (this.authorityId != null && !this.authorityId.equals(other.authorityId))) {
+        if ((this.userRoleId == null && other.userRoleId != null) || (this.userRoleId != null && !this.userRoleId.equals(other.userRoleId))) {
             return false;
         }
         return true;
@@ -99,7 +106,7 @@ public class Authorities implements Serializable {
 
     @Override
     public String toString() {
-        return "we.codered.rokomari.entity.Authorities[ authorityId=" + authorityId + " ]";
+        return "com.great.cms.db.entity.Authorities[ userRoleId=" + userRoleId + " ]";
     }
     
 }

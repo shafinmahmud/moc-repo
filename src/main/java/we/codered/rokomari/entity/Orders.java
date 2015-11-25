@@ -65,7 +65,7 @@ public class Orders implements Serializable {
     private Collection<OrderedItems> orderedItemsCollection;
     @JoinColumn(name = "user_id_fk", referencedColumnName = "user_id")
     @ManyToOne
-    private Users userIdFk;
+    private User userIdFk;
 
     public Orders() {
     }
@@ -131,11 +131,11 @@ public class Orders implements Serializable {
         this.orderedItemsCollection = orderedItemsCollection;
     }
 
-    public Users getUserIdFk() {
+    public User getUserIdFk() {
         return userIdFk;
     }
 
-    public void setUserIdFk(Users userIdFk) {
+    public void setUserIdFk(User userIdFk) {
         this.userIdFk = userIdFk;
     }
 

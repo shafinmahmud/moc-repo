@@ -4,7 +4,6 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>we.codered.rokomari.entity.Authors</class>
     <class>we.codered.rokomari.entity.Books</class>
-    <class>we.codered.rokomari.entity.Users</class>
     <class>we.codered.rokomari.entity.Subjects</class>
     <class>we.codered.rokomari.entity.Publishers</class>
     <class>we.codered.rokomari.entity.Orders</class>
