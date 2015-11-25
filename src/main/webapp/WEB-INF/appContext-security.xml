@@ -19,8 +19,8 @@
 		<security:intercept-url pattern="/createaccount" access="permitAll"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:intercept-url pattern="/categories/**" access="permitAll"/>
-		<security:intercept-url pattern="/lists/**" access="permitAll"/>
-		<security:intercept-url pattern="/authors/**" access="permitAll"/>
+		<security:intercept-url pattern="/fileup/**" access="permitAll"/>
+		<security:intercept-url pattern="/formsubmit/**" access="permitAll"/>
 		<security:intercept-url pattern="/publishers/**" access="permitAll"/>	
 		<security:intercept-url pattern="/student/**" access="hasRole('ROLE_STUDENT')"/>
 		<security:intercept-url pattern="/teacher/**" access="hasRole('ROLE_TEACHER')"/>
