@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/appContext-dao.xml</config>
 		<config>src/main/webapp/WEB-INF/appContext-security.xml</config>
+		<config>src/main/webapp/WEB-INF/appContext-service.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/servlet-context.xml</config>
