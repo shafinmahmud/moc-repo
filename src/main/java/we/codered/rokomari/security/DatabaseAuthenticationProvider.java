@@ -8,8 +8,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
-import com.great.cms.db.entity.User;
-import com.great.cms.service.UserService;
+import we.codered.rokomari.entity.User;
+import we.codered.rokomari.service.UserService;
+
+
 
 public class DatabaseAuthenticationProvider extends
 		AbstractUserDetailsAuthenticationProvider {

@@ -81,11 +81,6 @@
 		</dependency>
 
 		<!-- Thymleaf-->
-		<dependency>
-			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf-spring4</artifactId>
-			<version>2.1.4.RELEASE</version>
-		</dependency>
 
 		<!-- Spring security -->
 		<dependency>
