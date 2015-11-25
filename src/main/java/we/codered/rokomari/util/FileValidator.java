@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import we.codered.rokomari.bean.FileBucket;
+import we.codered.rokomari.beans.FileBucket;
 
 
 @Component

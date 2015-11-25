@@ -1,4 +1,4 @@
-package we.codered.rokomari.bean;
+package we.codered.rokomari.beans;
 
 import org.springframework.web.multipart.MultipartFile;
 

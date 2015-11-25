@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import we.codered.rokomari.entity.Books;
 
-@Repository("bookDao")
+@Repository("booksDao")
 public class BooksDao extends GenericHibernateDao<Books>{
 
 	public BooksDao(){

@@ -19,6 +19,7 @@
 		<security:intercept-url pattern="/createaccount" access="permitAll"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:intercept-url pattern="/categories/**" access="permitAll"/>
+		<security:intercept-url pattern="/books/**" access="permitAll"/>
 		<security:intercept-url pattern="/fileup/**" access="permitAll"/>
 		<security:intercept-url pattern="/download/**" access="permitAll"/>
 		<security:intercept-url pattern="/formsubmit/**" access="permitAll"/>

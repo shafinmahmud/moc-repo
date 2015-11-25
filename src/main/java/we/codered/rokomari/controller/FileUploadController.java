@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import we.codered.rokomari.bean.FileBucket;
-import we.codered.rokomari.bean.MultiFileBucket;
+import we.codered.rokomari.beans.FileBucket;
+import we.codered.rokomari.beans.MultiFileBucket;
 import we.codered.rokomari.util.FileValidator;
 import we.codered.rokomari.util.MultiFileValidator;
 

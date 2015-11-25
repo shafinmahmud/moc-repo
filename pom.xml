@@ -175,6 +175,16 @@
 		</dependency>
 
 
+		<!-- Rest support -->
+		<!-- For Spring 4.1.x and above, jackson-databind 2.3 or above is recommended, 
+			in order to avoid conversion issues. -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -184,16 +194,7 @@
 
 
 		<!-- Others -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.4.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-hibernate4</artifactId>
-			<version>2.4.4</version>
-		</dependency>
+
 
 
 
