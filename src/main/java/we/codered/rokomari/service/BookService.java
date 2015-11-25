@@ -11,14 +11,19 @@ import we.codered.rokomari.entity.Books;
 @Service("bookService")
 public class BookService {
 
+	@Autowired
 	private BooksDao dao;
 
-	@Autowired
-	public void setDao(BooksDao dao) {
-		this.dao = dao;
-	}
-	
 	public List<Books> getBook(){
 		return dao.findAll();
+	}
+	
+	public void createBook(){
+		/*Books book = new Books();
+		book.setTitle("কাকাবাবু সমগ্র ২");
+		book.setIsbn("9523252155");
+		book.setCategories("Thriller, Teen-age");
+		book.setAuthorIdFk();
+		dao.create();*/
 	}
 }
