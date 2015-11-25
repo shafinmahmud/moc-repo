@@ -12,10 +12,7 @@ public class UserService {
 	@Autowired
 	UserDao userDao;
 
-	public User getUser(String email){
-		
-		
-		return userDao.getUserByEmail(email);
-		
+	public User getUser(String email){	
+		return userDao.getUserByEmail(email);		
 	}
 }

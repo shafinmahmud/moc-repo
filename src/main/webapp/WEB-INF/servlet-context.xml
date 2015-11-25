@@ -10,16 +10,10 @@
 
 	<context:component-scan base-package="we.codered.rokomari.controller" />
 	<mvc:annotation-driven />
-
-
-
-    
-    
+ 
     
     <!-- Efficiently serving static resources; e.g. test.png will be access-able directly by <SERVER>/images/test.png URL -->
-    
-    
-    <bean id="jspViewResolver"
+       <bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
@@ -28,7 +22,4 @@
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	
-
-
-    
 </beans>
