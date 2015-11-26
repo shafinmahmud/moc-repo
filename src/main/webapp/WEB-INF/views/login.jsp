@@ -276,9 +276,7 @@ fieldset {
 			</div>
 		</div>
 	</div>
-	<form id="login"
-		action="${pageContext.request.contextPath}/j_spring_security_check"
-		method="post">
+	<form id="login">
 		<h1>Log In</h1>
 		<fieldset id="inputs">
 			<input id="username" type="text" name="j_username"
@@ -300,6 +298,47 @@ fieldset {
 $(document).ready(function(){
 		
 		
+	 function profilePage(){
+		 
+		 $.ajax({
+				
+				url: '${pageContext.request.contextPath}/admin/profile/',
+				type:'POST',
+				success:function(response){
+					
+					console.log(response);
+					
+				},
+				error : function(data,status,er) {
+					
+					console.log("error");
+					
+				}
+			});
+		 
+	 }
+	        $('#login').on('submit',function(e){
+	        	e.preventDefault();
+	        	
+                 $.ajax({
+					
+					url: '${pageContext.request.contextPath}/j_spring_security_check',
+					type:'POST',
+					data: $(this).serialize(),
+					statusCode: { 
+						200: function() {
+						    profilePage();
+					    }
+						    
+					},
+					error : function(data,status,er) {
+						
+						console.log("error");
+						
+					}
+				});
+	        	
+	        });
 			var recoveryEmailForm = $('#recoveryEmailForm');
 			var recoveryMessage = $('#recoveryMessage');
 			var email = "";

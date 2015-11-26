@@ -37,47 +37,51 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "user")
 @XmlRootElement
-@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-		@NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-		@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
-		@NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-		@NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled"),
-		@NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
-		@NamedQuery(name = "User.findByAccountNonExpired", query = "SELECT u FROM User u WHERE u.accountNonExpired = :accountNonExpired"),
-		@NamedQuery(name = "User.findByCredentialsNonExpired", query = "SELECT u FROM User u WHERE u.credentialsNonExpired = :credentialsNonExpired") })
-public class User implements Serializable, UserDetails {
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "user_id")
-	private Long userId;
-	@Basic(optional = false)
-	@Column(name = "username")
-	private String username;
-	@Basic(optional = false)
-	@Column(name = "password")
-	private String password;
-	@Column(name = "enabled")
-	private Boolean enabled;
-	@Column(name = "account_non_locked")
-	private Boolean accountNonLocked;
-	@Column(name = "account_non_expired")
-	private Boolean accountNonExpired;
-	@Column(name = "credientials_non_expired")
-	private Boolean credentialsNonExpired;
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "userId")
-	private List<Authorities> authoritiesList;
+@NamedQueries({
+    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+    @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
+    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
+    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
+    @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled"),
+    @NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
+    @NamedQuery(name = "User.findByAccountNonExpired", query = "SELECT u FROM User u WHERE u.accountNonExpired = :accountNonExpired"),
+    @NamedQuery(name = "User.findByCredentialsNonExpired", query = "SELECT u FROM User u WHERE u.credentialsNonExpired = :credentialsNonExpired")})
+public class User implements Serializable,UserDetails {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "user_id")
+    private Long userId;
+    @Basic(optional = false)
+    @Column(name = "username")
+    private String username;
+    @Basic(optional = false)
+    @Column(name = "password")
+    private String password;
+    @Column(name = "enabled")
+    private Boolean enabled;
+    @Column(name = "account_non_locked")
+    private Boolean accountNonLocked;
+    @Column(name = "account_non_expired")
+    private Boolean accountNonExpired;
+    @Column(name = "credientials_non_expired")
+    private Boolean credentialsNonExpired;
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<Authorities> authoritiesList;
+    
 
-	public User() {
-	}
 
-	public User(Long userId) {
-		this.userId = userId;
-	}
+    public User() {
+    }
 
-	public User(Long userId, String username, String password, boolean enabled, boolean accountNonLocked,
-			boolean accountNonExpired, boolean credentialsNonExpired) {
+    public User(Long userId) {
+        this.userId = userId;
+    }
+
+    public User(Long userId, String username, String password, boolean enabled,
+			boolean accountNonLocked, boolean accountNonExpired,
+			boolean credentialsNonExpired) {
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
@@ -87,99 +91,99 @@ public class User implements Serializable, UserDetails {
 		this.credentialsNonExpired = credentialsNonExpired;
 	}
 
-	public Long getUserId() {
-		return userId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	public Boolean getAccountNonLocked() {
-		return accountNonLocked;
-	}
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
 
-	public void setAccountNonLocked(Boolean accountNonLocked) {
-		this.accountNonLocked = accountNonLocked;
-	}
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
 
-	public Boolean getAccountNonExpired() {
-		return accountNonExpired;
-	}
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
 
-	public void setAccountNonExpired(Boolean accountNonExpired) {
-		this.accountNonExpired = accountNonExpired;
-	}
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
 
-	public Boolean getCredentialsNonExpired() {
-		return credentialsNonExpired;
-	}
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
 
-	public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
-		this.credentialsNonExpired = credentialsNonExpired;
-	}
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
 
-	@XmlTransient
-	public List<Authorities> getAuthoritiesList() {
-		return authoritiesList;
-	}
+    @XmlTransient
+    public List<Authorities> getAuthoritiesList() {
+        return authoritiesList;
+    }
 
-	public void setAuthoritiesList(List<Authorities> authoritiesList) {
-		this.authoritiesList = authoritiesList;
-	}
+    public void setAuthoritiesList(List<Authorities> authoritiesList) {
+        this.authoritiesList = authoritiesList;
+    }
 
-	@Override
-	public int hashCode() {
-		int hash = 0;
-		hash += (userId != null ? userId.hashCode() : 0);
-		return hash;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (userId != null ? userId.hashCode() : 0);
+        return hash;
+    }
 
-	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
-		if (!(object instanceof User)) {
-			return false;
-		}
-		User other = (User) object;
-		if ((this.userId == null && other.userId != null)
-				|| (this.userId != null && !this.userId.equals(other.userId))) {
-			return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof User)) {
+            return false;
+        }
+        User other = (User) object;
+        if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public String toString() {
-		return "com.great.cms.db.entity.User[ userId=" + userId + " ]";
-	}
+    @Override
+    public String toString() {
+        return "com.great.cms.db.entity.User[ userId=" + userId + " ]";
+    }
 
-	@Override
+   
+
+    @Override
 	public boolean isAccountNonExpired() {
 		return accountNonExpired;
 	}
@@ -201,7 +205,7 @@ public class User implements Serializable, UserDetails {
 
 	@Override
 	public List<GrantedAuthority> getAuthorities() {
-
+		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 
 		for (Authorities authority : this.authoritiesList) {
@@ -210,5 +214,7 @@ public class User implements Serializable, UserDetails {
 		return authorities;
 
 	}
-
+	
+	
+    
 }

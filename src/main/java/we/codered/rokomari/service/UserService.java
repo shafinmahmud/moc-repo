@@ -12,7 +12,7 @@ public class UserService {
 	@Autowired
 	UserDao userDao;
 
-	public User getUser(String email){	
-		return userDao.findByNamedQuery("User.findByEmail", "email", email);		
+	public User getUser(String username){	
+		return userDao.findByNamedQuery("User.findByUsername", "username", username);		
 	}
 }
