@@ -4,10 +4,10 @@ import org.springframework.stereotype.Repository;
 
 import we.codered.rokomari.entity.Authors;
 
-@Repository("authorDao")
-public class AuthorDao extends GenericHibernateDao<Authors>{
+@Repository("authorsDao")
+public class AuthorsDao extends GenericHibernateDao<Authors>{
 
-	public AuthorDao(){
+	public AuthorsDao(){
 		setClazz(Authors.class);
 	}
 }

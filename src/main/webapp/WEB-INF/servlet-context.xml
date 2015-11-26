@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
 	    http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans 
@@ -12,18 +11,26 @@
 
 
 	<context:component-scan base-package="we.codered.rokomari.controller" />
+	<context:component-scan base-package="we.codered.rokomari.util" />
 	<mvc:annotation-driven />
- 
-    
-    <!-- Efficiently serving static resources; e.g. test.png will be access-able directly by <SERVER>/images/test.png URL -->
-       <bean id="jspViewResolver"
+
+
+	<!-- Efficiently serving static resources; e.g. test.png will be access-able 
+		directly by <SERVER>/images/test.png URL -->
+	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-    
+
+	<!-- one of the several properties available; the maximum file size in bytes -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5242880" />
+	</bean>
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+
 	
 	<!-- email configuration -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -40,4 +47,5 @@
 		</property>
 	</bean>
 	
+
 </beans>
