@@ -247,7 +247,7 @@ fieldset {
 </style>
 </head>
 <body>
-
+ 
 	<div class="container">
 		<div id="myModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -260,9 +260,9 @@ fieldset {
 							recover password</h4>
 					</div>
 					<div class="modal-body">
-						<form id="recoveryEmailForm" action="${pageContext.request.contextPath}/mail/recoveryemail" method="post">
+						<form id="recoveryEmailForm">
 						   <div class="form-group">
-						      <input id="recoveryEmail" class="form-control" type="email" name="email" placeholder="email">
+						      <input id="recoveryEmail" class="form-control" type="email" name="emailAddress" placeholder="email">
 						   </div>
 						   <h4 id="recoveryMessage"></h4>
 						   <button type="submit" class="btn btn-default btn-sm">Submit</button>
@@ -297,7 +297,53 @@ fieldset {
 
 	</form>
 	<script type="text/javascript">
-	
+$(document).ready(function(){
+		
+		
+			var recoveryEmailForm = $('#recoveryEmailForm');
+			var recoveryMessage = $('#recoveryMessage');
+			var email = "";
+			var recoverySubmit =  $('button[type="submit"]');
+			
+			recoveryEmailForm.on('submit',function(e){
+								
+				e.preventDefault();
+				
+				email = $('#recoveryEmail').val();	
+				var emailAddress;
+				
+				if(email == null || email == ""){
+					
+					recoveryMessage.text("Cannot be empty");
+					return;
+				}
+		
+				recoverySubmit.prop('disabled', true);
+				recoveryMessage.text("Please while your email is being sent");
+				
+				$.ajax({
+					
+					url: '${pageContext.request.contextPath}/mail/recoveryemail',
+					type:'POST',
+					data: $(this).serialize(),
+					success: function(response){
+						if(response=="ok"){
+							recoveryMessage.text("An email has been sent to your account").removeClass("text-danger").addClass("text-success");
+							$('#recoveryEmail').val("");
+							recoverySubmit.prop('disabled', false);
+						}
+						
+					},
+					error : function(data,status,er) {
+						
+						recoveryMessage.text("Something went wrong!").removeClass("text-success").addClass("text-danger");
+						$('button[type="submit"]').prop('disabled', false);
+						
+					}
+				});
+			});				
+			 
+		});
 	</script>
 </body>
 </html>

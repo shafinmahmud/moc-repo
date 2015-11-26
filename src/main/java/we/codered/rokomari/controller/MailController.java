@@ -25,6 +25,8 @@ public class MailController {
 	UserService userService;
 
 	
+
+	
 	@ResponseBody
 	@RequestMapping(value = "recoveryemail", method = RequestMethod.POST)
 	public String emailSend(String emailAddress) {
