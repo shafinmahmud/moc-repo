@@ -248,6 +248,34 @@ fieldset {
 </head>
 <body>
 
+	<div class="container">
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-primary">Please enter your email address to
+							recover password</h4>
+					</div>
+					<div class="modal-body">
+						<form id="recoveryEmailForm" action="${pageContext.request.contextPath}/mail/recoveryemail" method="post">
+						   <div class="form-group">
+						      <input id="recoveryEmail" class="form-control" type="email" name="email" placeholder="email">
+						   </div>
+						   <h4 id="recoveryMessage"></h4>
+						   <button type="submit" class="btn btn-default btn-sm">Submit</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<form id="login"
 		action="${pageContext.request.contextPath}/j_spring_security_check"
 		method="post">
@@ -259,17 +287,18 @@ fieldset {
 				placeholder="Password" required>
 		</fieldset>
 		<c:if test="${param.error != null}">
-		    <h4 class="text-danger">Incorrect username or password</h4>
+			<h4 class="text-danger">Incorrect username or password</h4>
 		</c:if>
 		<fieldset id="actions">
-			<input type="submit" id="submit" value="Log in"> <a href="">Forgot
-				your password?</a><a href="${pageContext.request.contextPath}/signup">Register</a>
+			<input type="submit" id="submit" value="Log in"> 
+			<a href="#" data-toggle="modal" data-target="#myModal">Forgot your password?</a> 
+			<a href="${pageContext.request.contextPath}/signup">Register</a>
 		</fieldset>
-		
+
 	</form>
+	<script type="text/javascript">
 	
-
-
+	</script>
 </body>
 </html>
 

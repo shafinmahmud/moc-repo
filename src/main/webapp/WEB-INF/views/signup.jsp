@@ -20,7 +20,7 @@
 <script
 	src="${pageContext.request.contextPath}/resources/javascript/bootstrap.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/javascript/myscript.js"></script>
+	src="${pageContext.request.contextPath}/resources/javascript/signup.js"></script>
 
 <style>
 html, body {
@@ -41,7 +41,7 @@ body {
 }
 
 /*--------------------*/
-#login {
+#signup {
 	background-color: #fff;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
 		to(#eee));
@@ -50,13 +50,10 @@ body {
 	background-image: -ms-linear-gradient(top, #fff, #eee);
 	background-image: -o-linear-gradient(top, #fff, #eee);
 	background-image: linear-gradient(top, #fff, #eee);
-	height: 350px;
-	width: 460px;
 	margin: -150px 0 0 -230px;
 	padding: 30px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
+    position:relative;
+    top:15em;
 	z-index: 0;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -231,7 +228,7 @@ fieldset {
 
 #actions a {
 	color: #3151A2;
-	float: right;
+	
 	line-height: 35px;
 	margin-left: 10px;
 }
@@ -244,28 +241,74 @@ fieldset {
 	top: 60px;
 	color: #999;
 }
+
+
+
+
+
 </style>
 </head>
 <body>
 
-	<sf:form id="login" action="${pageContext.request.contextPath}/createaccount" method="post" commandName="signUpBean">
+<%@ include file="/WEB-INF/views/template/header.jsp" %>
+ <div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-8">
+            <sf:form id="signup"
+		action="${pageContext.request.contextPath}/createaccount"
+		method="post" commandName="signUpBean">
 		<h1>Sign Up</h1>
 		<fieldset id="inputs">
-			<sf:input path="username" id="username" type="text" name="username" placeholder="Username"/>
-			<h5 class="alert-danger"><sf:errors path="username"></sf:errors></h5>
-            <sf:input path="password" id="password" type="password" name="password" placeholder="Password"/>
-            <h5 class="alert-danger"><sf:errors path="password"></sf:errors></h5>
+			<div class="col-md-4">
+				<sf:input path="firstName" id="firstName" type="text"
+					name="firstName" placeholder="First Name" />
+				<h5 class="alert-danger errorMessage">
+					<sf:errors path="firstName"></sf:errors>
+				</h5>
+				<sf:input path="lastName" id="lastName" type="text" name="lastName"
+					placeholder="Last Name" />
+				<h5 class="alert-danger">
+					<sf:errors path="lastName"></sf:errors>
+				</h5>
+				<sf:input path="email" id="email" type="email" name="email"
+					placeholder="Email" />
+				<h5 class="alert-danger">
+					<sf:errors path="email"></sf:errors>
+				</h5>
+				<sf:input path="address" id="address" type="text" name="address"
+					placeholder="Your Address" />
+				<h5 class="alert-danger" id="address"></h5>
+			</div>
+			<div class="col-md-4" style="position:relative;left:10em;">
+				<sf:input path="contactNo" id="contactNo" type="number"
+					name="contactNo" placeholder="Contact No" />
+				<h5 class="alert-danger">
+					<sf:errors path="contactNo"></sf:errors>
+				</h5>
+				<sf:input path="password" id="password" type="text" name="password"
+					placeholder="Password" />
+				<h5 class="alert-danger">
+					<sf:errors path="password"></sf:errors>
+				</h5>
+				<input id="confirmPassword" type="text" name="confirmPassword"
+					placeholder="Confirm Password" />
+				<h5 class="alert-danger" id="confirmMessage"></h5>
+			</div>
 		</fieldset>
-		<fieldset id="actions">
-			<input type="submit" id="submit" value="sign up"> <a href="#">Forgot
+		<fieldset id="actions" style="position:relative;left:1.3em;">
+			    <input type="submit" id="submit" value="sign up"> 
+		
+			<a href="#">Forgot
 				your password?</a><a href="${pageContext.request.contextPath}/login">Login</a>
 		</fieldset>
 
 	</sf:form>
-
-
-	<script type="text/javascript">
+        </div>
+    </div>
+ </div>
 	
-	</script>
+
+
+
 </body>
 </html>

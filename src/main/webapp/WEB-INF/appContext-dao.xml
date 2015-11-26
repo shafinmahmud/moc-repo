@@ -8,6 +8,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
+	<!-- validation messages -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
 
 	<context:property-placeholder location="classpath:persistence-mysql.properties" />
 
@@ -34,6 +41,7 @@
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">${hibernate.use_jdbc_metadata_defaults}</prop>
 				<!--<prop key="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</prop> -->
 			</props>
 		</property>
