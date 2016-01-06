@@ -10,8 +10,7 @@
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<context:component-scan base-package="we.codered.rokomari.controller" />
-	<context:component-scan base-package="we.codered.rokomari.util" />
+	<context:component-scan base-package="codered.rokomari" />
 	<mvc:annotation-driven />
 
 

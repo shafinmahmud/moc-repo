@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.6.2.201410090854-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.7.2.201511260958-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/webapp/WEB-INF/appContext-dao.xml</config>
-		<config>src/main/webapp/WEB-INF/appContext-security.xml</config>
-		<config>src/main/webapp/WEB-INF/appContext-service.xml</config>
 		<config>src/main/webapp/WEB-INF/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/app-dao.xml</config>
+		<config>src/main/webapp/WEB-INF/app-security.xml</config>
+		<config>src/main/webapp/WEB-INF/app-service.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
